@@ -1,0 +1,135 @@
+-- restaurant_database.sql
+
+-- Drop the database if it already exists
+DROP DATABASE IF EXISTS la_casa_di_alifio;
+
+-- Create the database
+CREATE DATABASE la_casa_di_alifio;
+
+-- Use the newly created database
+USE la_casa_di_alifio;
+
+-- Create Table Kategori
+CREATE TABLE IF NOT EXISTS kategori (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nama_kategori VARCHAR(100) NOT NULL
+);
+
+-- Create Table Menu
+CREATE TABLE IF NOT EXISTS menu (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nama_menu VARCHAR(100) NOT NULL,
+    harga DECIMAL(10, 2) NOT NULL,
+    deskripsi TEXT,
+    gambar VARCHAR(255) NOT NULL
+);
+
+-- Create Table Pesanan
+CREATE TABLE IF NOT EXISTS pesanan (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nama VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    jumlah INT NOT NULL,
+    tanggal TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Create Table Menu_Kategori (to link menu items with categories)
+CREATE TABLE IF NOT EXISTS menu_kategori (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    id_menu INT NOT NULL,
+    id_kategori INT NOT NULL,
+    FOREIGN KEY (id_menu) REFERENCES menu(id) ON DELETE CASCADE,
+    FOREIGN KEY (id_kategori) REFERENCES kategori(id) ON DELETE CASCADE
+);
+
+-- Create Table Pesanan_Detail (details for each order)
+CREATE TABLE IF NOT EXISTS pesanan_detail (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    id_pesanan INT NOT NULL,
+    id_menu INT NOT NULL,
+    jumlah INT NOT NULL,
+    FOREIGN KEY (id_pesanan) REFERENCES pesanan(id) ON DELETE CASCADE,
+    FOREIGN KEY (id_menu) REFERENCES menu(id) ON DELETE CASCADE
+);
+
+-- Create a table for menu items
+CREATE TABLE IF NOT EXISTS menu_items (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    description TEXT NOT NULL,
+    price DECIMAL(10, 2) NOT NULL,
+    image VARCHAR(255) NOT NULL
+);
+
+-- Create a table for gallery items
+CREATE TABLE IF NOT EXISTS gallery_items (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(255) NOT NULL,
+    image VARCHAR(255) NOT NULL
+);
+
+-- Insert sample data into kategori
+INSERT INTO kategori (nama_kategori) VALUES 
+('Appetizers'), 
+('Main Course'), 
+('Desserts'), 
+('Beverages');
+
+-- Insert sample data into menu
+INSERT INTO menu (nama_menu, harga, deskripsi, gambar) VALUES 
+('Spaghetti Carbonara', 12.50, 'Creamy pasta with bacon and cheese.', 'images/spagetti.jpg'),
+('Caesar Salad', 8.00, 'Fresh salad with Caesar dressing.', 'images/salad.jpg'),
+('Tiramisu', 6.00, 'Traditional Italian dessert.', 'images/tiramisu.jpg'),
+('Latte', 3.50, 'Hot espresso with steamed milk.', 'images/latte.jpg'),
+('Pizza Margherita', 50.00, 'Pizza dengan topping keju mozzarella dan saus tomat segar.', 'images/margarita.png'),
+('Cheeseburger', 35.00, 'Burger dengan daging sapi, keju cheddar, selada, dan tomat.', 'images/cheeseburger.jpg'),
+('Caesar Salad', 25.00, 'Salad segar dengan selada, crouton, ayam panggang, dan saus Caesar.', 'images/salad1.png'),
+('Spaghetti Bolognese', 40.00, 'Spaghetti dengan saus daging sapi cincang dan saus tomat.', 'images/spagetti1.png'),
+('Sushi Roll', 60.00, 'Sushi roll dengan isi ikan tuna, salmon, dan alpukat.', 'images/susi.png'),
+('Ice Cream Sundae', 20.00, 'Es krim vanila dengan saus cokelat dan kacang almond.', 'images/icecream.png'),
+('Tacos', 45.00, 'Taco dengan daging ayam, salsa, dan guacamole.', 'images/tacos.png'),
+('Pasta Aglio e Olio', 30.00, 'Pasta dengan bawang putih, minyak zaitun, dan cabai.', 'images/pasta.png'),
+('Brownies Cokelat', 15.00, 'Brownies lembut dengan rasa cokelat yang kaya.', 'images/brownis.png'),
+('Lasagna', 25.00, 'Lasagna dengan saus daging sapi dan keju.', 'images/lasagna.webp'),
+('Pancake', 28.00, 'Pancake lembut dengan sirup maple dan buah segar.', 'images/salad1.png'),
+('Nasi Goreng', 30.00, 'Nasi goreng dengan ayam, telur, dan sayuran.', 'images/kentang.png');
+
+-- Link menu with kategori (via menu_kategori)
+INSERT INTO menu_kategori (id_menu, id_kategori) VALUES 
+(1, 2),  -- Spaghetti Carbonara in Main Course
+(2, 1),  -- Caesar Salad in Appetizers
+(3, 3),  -- Tiramisu in Desserts
+(4, 4),  -- Latte in Beverages
+(5, 2),  -- Pizza Margherita in Main Course
+(6, 2),  -- Cheeseburger in Main Course
+(7, 1),  -- Caesar Salad in Appetizers
+(8, 2),  -- Spaghetti Bolognese in Main Course
+(9, 3),  -- Sushi Roll in Main Course
+(10, 4), -- Ice Cream Sundae in Desserts
+(11, 2), -- Tacos in Main Course
+(12, 2), -- Pasta Aglio e Olio in Main Course
+(13, 3), -- Brownies Cokelat in Desserts
+(14, 2), -- Lasagna in Main Course
+(15, 3), -- Pancake in Desserts
+(16, 2); -- Nasi Goreng in Main Course
+
+-- Insert sample data into menu_items
+INSERT INTO menu_items (name, description, price, image) VALUES
+('Pasta Carbonara', 'Creamy pasta with bacon and cheese.', 85.00, 'images/pasta_carbonara.jpg'),
+('Pizza Margherita', 'Classic pizza with fresh basil and mozzarella.', 70.00, 'images/pizza_margherita.jpg'),
+('Caesar Salad', 'Crisp romaine lettuce with Caesar dressing.', 50.00, 'images/caesar_salad.jpg');
+
+-- Insert sample data into gallery_items
+INSERT INTO gallery_items (title, image) VALUES
+('Dish 1', 'images/dish1.jpg'),
+('Dish 2', 'images/dish2.jpg'),
+('Dish 3', 'images/dish3.jpg');
+
+-- Insert sample data into pesanan
+INSERT INTO pesanan (nama, email, jumlah) VALUES 
+('John Doe', 'john@example.com', 2);
+
+-- Insert sample data into pesanan_detail
+INSERT INTO pesanan_detail (id_pesanan, id_menu, jumlah) VALUES 
+(1, 1, 1),  -- 1x Spaghetti Carbonara for Order 1
+(1, 4, 1);  -- 1x Latte for Order 1

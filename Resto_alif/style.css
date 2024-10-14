@@ -1,0 +1,313 @@
+/* style.css */
+
+/* Gaya untuk hero section */
+#hero {
+	position: relative;
+	overflow: hidden;
+	height: 100vh;
+}
+
+.hero-content h1 {
+	font-size: 56px;
+	line-height: 1.2;
+}
+
+.hero-content p {
+	font-size: 22px;
+}
+
+/* Warna untuk tombol dan link */
+.btn-danger {
+	background-color: #e0001a;
+	border: none;
+	padding: 10px 30px;
+	font-size: 18px;
+}
+
+/* Warna navbar dan link */
+.navbar-light .navbar-nav .nav-link {
+	color: #333;
+	font-size: 18px;
+}
+
+.navbar-light .navbar-nav .btn {
+	background-color: #007bff;
+	padding: 10px 20px;
+	font-size: 16px;
+}
+
+/* Gaya untuk ikon samping */
+.side-icons ul {
+	list-style: none;
+	padding: 0;
+}
+
+.side-icons ul li {
+	margin-bottom: 20px;
+}
+
+.side-icons ul li img {
+	filter: brightness(0) invert(1); /* Warna putih pada ikon */
+	transition: all 0.3s;
+}
+
+.side-icons ul li:hover img {
+	transform: scale(1.1);
+}
+
+/* Gaya untuk footer */
+footer {
+	background-color: #000;
+	color: white;
+}
+
+footer p {
+	margin: 0;
+}
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+	background-color: rgba(0, 0, 0, 0.5);
+	padding: 15px;
+	border-radius: 50%;
+}
+
+.carousel-item {
+	transition: transform 0.8s ease-in-out;
+}
+
+.hero-content {
+	top: 25%;
+	left: 10%;
+	transform: translateY(-50%);
+}
+body {
+	padding-top: 80px; /* Sesuaikan nilai ini dengan tinggi navbar */
+}
+
+/* Pastikan navbar di atas elemen lain */
+.navbar {
+	z-index: 9999;
+}
+
+.navbar {
+	transition: transform 0.3s ease; /* Smooth transition for hiding/showing */
+	transform: translateY(0); /* Start position of the navbar */
+}
+
+.navbar-hidden {
+	transform: translateY(-100%); /* Hide the navbar */
+}
+
+#hero {
+	height: 100vh; /* Height for hero section */
+	background: url("images/Honda4.webp") center/cover no-repeat;
+}
+.news-events {
+	background-color: #f9f9f9;
+	padding: 40px 20px;
+}
+
+.news-events h2 {
+	text-align: center;
+	margin-bottom: 30px;
+	font-size: 2.5rem;
+	color: #333;
+}
+
+.event-item {
+	background-color: #fff;
+	border: 1px solid #ddd;
+	border-radius: 5px;
+	padding: 20px;
+	margin-bottom: 20px;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.event-item h3 {
+	margin: 0 0 10px 0;
+	color: #d9534f;
+}
+
+.event-item p {
+	margin: 5px 0;
+	color: #555;
+}
+
+.motor-section {
+	background-color: #ddd;
+}
+.side-icons {
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional shadow for depth */
+}
+
+.icon-item {
+	border: 1px solid transparent; /* Set initial border to transparent */
+	transition: border-color 0.3s ease, transform 0.3s ease; /* Smooth transition */
+	transform: translateX(20px); /* Move item slightly to the right */
+	opacity: 0.8; /* Initial opacity */
+}
+
+.icon-item:hover {
+	border-color: #007bff; /* Border color on hover */
+	transform: translateX(0); /* Move item back to original position */
+	opacity: 1; /* Full opacity on hover */
+}
+
+.text-white {
+	color: white; /* Set text color to white */
+}
+.menu-item img {
+	max-width: 100%; /* Pastikan gambar tidak melebihi lebar kolom */
+	height: auto; /* Pertahankan rasio aspek gambar */
+	max-height: 300px; /* Batasi tinggi maksimum gambar agar tidak terlalu besar */
+	object-fit: cover; /* Potong gambar jika diperlukan untuk menyesuaikan ukuran */
+	margin: 0 auto; /* Pusatkan gambar secara horizontal */
+}
+.logo-responsive {
+	max-width: 100%; /* Memastikan lebar maksimal 100% dari container-nya */
+	height: auto; /* Mengatur tinggi secara otomatis berdasarkan aspek rasio */
+	max-height: 65px; /* Membatasi tinggi maksimum logo */
+}
+
+/* Penyesuaian lebih lanjut untuk layar yang lebih kecil */
+@media (max-width: 768px) {
+	.logo-responsive {
+		max-height: 50px; /* Ukuran logo lebih kecil untuk tablet */
+	}
+}
+
+@media (max-width: 576px) {
+	.logo-responsive {
+		max-height: 40px; /* Ukuran logo lebih kecil untuk ponsel */
+	}
+}
+/* CSS untuk navbar */
+.navbar {
+	transition: transform 0.4s ease, top 0.4s ease; /* Transisi untuk efek scroll yang lebih halus */
+	padding: 15px 0; /* Padding untuk navbar */
+	position: fixed; /* Agar navbar tetap di atas */
+	width: 100%;
+	z-index: 999; /* Agar navbar berada di atas konten lainnya */
+	top: 0; /* Memastikan navbar berada di atas */
+}
+
+.navbar-hidden {
+	transform: translateY(-100%); /* Menggeser navbar ke atas saat disembunyikan */
+}
+
+/* Gaya untuk link navbar */
+.navbar-nav .nav-link {
+	color: #333; /* Warna teks */
+	transition: color 0.3s; /* Transisi untuk warna */
+}
+
+.navbar-nav .nav-link:hover {
+	color: #007bff; /* Warna saat hover */
+}
+
+/* Gaya untuk tombol daftar menu */
+.daftar-menu-btn {
+	margin-left: 20px; /* Jarak dari item navbar */
+}
+
+/* Menambahkan beberapa ruang di bagian atas konten */
+body {
+	padding-top: 70px; /* Memberikan ruang untuk navbar yang tetap di atas */
+}
+
+/* Gaya untuk konten agar ada ruang */
+.content-section {
+	height: 800px; /* Tinggi untuk demo */
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 2rem;
+	border-bottom: 1px solid #ccc; /* Batas untuk visual */
+}
+
+.dropdown-menu {
+	transition: opacity 0.3s ease;
+}
+
+/* Gaya untuk tombol daftar menu */
+.daftar-menu-btn {
+	margin-left: 20px; /* Jarak dari item navbar */
+}
+
+/* Menambahkan beberapa ruang di bagian atas konten */
+body {
+	padding-top: 70px; /* Memberikan ruang untuk navbar yang tetap di atas */
+}
+
+/* Button styling */
+.daftar-menu-btn {
+	background-color: #ff6600;
+	border-radius: 50px;
+	padding: 0.5rem 1.5rem;
+	transition: background-color 0.3s ease;
+}
+
+.daftar-menu-btn:hover {
+	background-color: #e55b00;
+	color: #fff;
+}
+/* Full-width card */
+.container-fluid {
+	padding: 0; /* Remove padding for full width */
+}
+
+.card {
+	width: 100%; /* Ensure the card takes the full width */
+	border-radius: 15px; /* Rounded corners */
+	overflow: hidden; /* To ensure the image fits well */
+	height: 500px; /* Set a fixed height or adjust based on content */
+}
+
+.card-title {
+	color: #333;
+	font-weight: bold;
+}
+
+.card-body {
+	padding: 2rem;
+}
+
+.card-text {
+	font-size: 1.1rem;
+	line-height: 1.6;
+}
+
+.card-img {
+	border-top-left-radius: 15px;
+	border-bottom-left-radius: 15px;
+	height: 100%; /* Make sure the image takes full height of the card */
+}
+.dropdown-menu {
+	background-color: #f8f9fa; /* Adjust background color */
+	border-radius: 0; /* Remove rounded corners */
+}
+
+.dropdown-item {
+	display: flex;
+	align-items: center; /* Center items vertically */
+	padding: 10px 15px; /* Adjust padding */
+	color: #333; /* Text color */
+}
+
+.dropdown-item img {
+	margin-right: 10px; /* Spacing between icon and text */
+}
+
+.dropdown-item:hover {
+	background-color: #eaeaea; /* Hover effect */
+}
+body,
+html {
+	margin: 0;
+	height: 100%;
+	overflow: hidden;
+}
+#panorama-container {
+	width: 100%;
+	height: 100vh;
+}
